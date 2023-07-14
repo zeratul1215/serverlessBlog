@@ -1,0 +1,35 @@
+org: zeratul
+app: first-express-serverless
+service: first-express-serverless
+frameworkVersion: '3'
+
+provider:
+  name: aws
+  runtime: nodejs18.x
+  environment: 
+    DB_HOST_END_NAME: my-blog.cuuvsmferzqo.us-east-2.rds.amazonaws.com
+    DB_USERNAME: admin
+    DB_PWD: yl001215th
+    DB_NAME: blog_2023
+    DB_PORT: 3306
+    DB_DIALECT: mysql
+
+functions:
+  getTest:
+    handler: index.handler
+    events:
+      - httpApi:
+          path: /
+          method: get
+  postTest:
+    handler: index.handler
+    events:
+      - httpApi:
+          path: /
+          method: post
+  updateDB:
+    handler: index.handler
+    events:
+      - httpApi:
+          path: /updateDB
+          method: get 
